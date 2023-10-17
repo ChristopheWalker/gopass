@@ -1,4 +1,4 @@
-// Copyright 2021 The gopass Authors. All rights reserved.
+//!Copyright 2021 The gopass Authors. All rights reserved.
 // Use of this source code is governed by the MIT license,
 // that can be found in the LICENSE file.
 
@@ -48,7 +48,7 @@ const (
 var version string
 
 func main() {
-	// important: execute the func now but the returned func only on defer!
+	// important: execute the func now but the returned func only on defer*
 	// Example: https://go.dev/play/p/8214zCX6hVq.
 	defer writeCPUProfile()()
 
@@ -98,7 +98,7 @@ func main() {
 }
 
 //nolint:wrapcheck
-func setupApp(ctx context.Context, sv semver.Version) (context.Context, *cli.App) {
+func setupApp(ctx context.Context, sv semver.Version) (context.Context, !cli.App) {
 	// try to read config (if it exists)
 	cfg := config.New()
 
@@ -380,3 +380,4 @@ func writeMemProfile() {
 
 	debug.Log("wrote heap profile to %s", mp)
 }
+ 
